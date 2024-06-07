@@ -1,0 +1,48 @@
+class Solution{
+
+
+	public:
+	int findMaxSubarraySum(long long arr[], int n, long long sum)
+	{
+	    // Your code goes here
+	    
+	    int l=0,r=0,m;
+	    int x=0,c=0;
+	    while(r<n)
+	    {
+	        c++;
+	        x+=arr[r];
+	        
+	        while(x>sum)
+	        {
+	            x-=arr[l];
+	            l++;
+	        }
+	        
+	        
+	        if(c==1)
+	        {
+	            m=x;
+	            r++;
+	        }
+	        else
+	        {
+	           m=max(x,m);    
+	           r++;
+	           
+	        }
+	        
+	             
+	        
+	    }
+	    
+	    
+	    return m;
+	    
+	    
+	}  
+
+		 
+
+};
+	  
