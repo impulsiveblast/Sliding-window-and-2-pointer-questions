@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int maxScore(vector<int>& cardPoints, int k) {
+        
+  int t=0;
+
+  for(int i=0;i<k;i++)
+  {
+    t+=cardPoints[i];   //First we'll took summation of all the elements which belongs to the first four indices of the array
+  }
+int s=cardPoints.size();  
+int q=0,p=t;
+  for(int j=0;j<k;j++)
+  {
+     p-=cardPoints[k-1-j];   //Now we would create new summation value first by decreasing one value from the sumassion
+                            //taken in first step and adding a value from the end of the array and this is continuous till no more possiblities are left behind
+     q+=cardPoints[s-1-j];  //Use maximum function in order to get the maximum value of all the possible submission values present before us
+
+     t=max(t,p+q);
+  }
+
+
+      return t;
+    
+    
+    }
+};
