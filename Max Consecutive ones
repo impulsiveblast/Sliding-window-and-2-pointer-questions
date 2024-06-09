@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int longestOnes(vector<int>& nums, int k) {
+        
+        int l=0,r=0,z=0,size=0;
+       
+       vector<int> v;
+       int j=0;
+        
+        while(r<nums.size())
+        {
+           if(nums[r]==0)
+           {
+            z++;
+            v.push_back(r);
+           } 
+
+           if(z<=k)
+           {
+              size=max(size,r-l+1);
+           }
+           else
+           {
+            // int z1=0;
+                  while(nums[l]!=0)  //move l till u find a zero which needs to be avoided to decrease the value of z
+                  {
+                    l++;
+                    
+                  }
+               l++;
+               size=max(size,r-l+1);
+               z--;
+           }
+              
+              
+            //   z=1;
+           
+
+           r++;
+        
+        }
+
+        return size;
+        
+    }
+};
