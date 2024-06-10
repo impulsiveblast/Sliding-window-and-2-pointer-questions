@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+       vector<int> v=fruits;
+    int size=0,l=0,r=0,z=0;
+     
+     map<int,int> m;
+
+
+    while(r<v.size())
+    {
+        if(m.size()<=2)
+        {
+            m[v[r]]++;
+            if(m.size()<=2)
+            {
+              size=max(size,r-l+1);
+            }
+            
+        }
+        
+        
+            while(m.size()>2)
+            {
+                m[v[l]]--;   //size of the map value is decreased as only 2 kinds of fruit is allowed
+                
+                if(m[v[l]]==0)
+                {
+                    m.erase(v[l]);   //if a value has 0 as mapped value then it nees to be removed from map to retain only those elements which have some value mapped.
+                }
+                
+                l++;
+            }
+
+            size=max(size,r-l+1);
+
+            
+        
+
+        r++;
+    }
+     
+       return size;
+
+    }
+};
