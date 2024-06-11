@@ -1,0 +1,67 @@
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        
+        sort(nums.begin(),nums.end());
+        set<vector<int>> s;
+          vector<vector<int>> v2;
+
+        vector<int> v1;
+    
+int i1;
+
+for(int i=0;i<nums.size();i++)
+{
+    if(nums[i]<=0)
+    {
+        i1=i;
+    }
+}
+
+        for(int j=0;j<nums.size()-2;j++)
+        {
+                int a=nums[j];
+                int b=-1*a;
+                int k=j+1,m=nums.size()-1;
+
+                while(k<m)
+                {
+                   if(nums[k]+nums[m]>b)
+                   {
+                    m--;
+                   }  
+                   else if(nums[k]+nums[m]<b)
+                   {
+                      k++;
+                   }
+                   else if(nums[k]+nums[m]==b)
+                   {
+                       v1.push_back(nums[j]);
+                       v1.push_back(nums[k]);
+                       v1.push_back(nums[m]);
+                       
+                        m--;                            //in case more triplets are possible we would decrease the present sum i.e nums[k]+nums[m] 
+                        v2.push_back(v1);
+                       
+                        v1.clear();
+                        // k++;
+                        //  break;
+                   }
+                }
+           }
+
+         for(int i=0;i<v2.size();i++)
+         {
+            s.insert(v2[i]);
+         }
+
+         v2.clear();
+
+         for(auto it=s.begin();it!=s.end();it++)
+         {
+            v2.push_back(*it);
+         }
+
+        return v2;
+    }
+};
